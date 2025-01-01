@@ -19,7 +19,6 @@ You take the server offline temporarily so that the machine can recover and retu
 1. [Read the Wireshark TCP/HTTP Log.](https://github.com/SMUGLER79/Cybersecurity-Incident-Report-Scenario/blob/main/Wireshark%20TCP_HTTP%20log.xlsx)
 2. [Identify the type of attack causing the network interuption.](#Identify-the-type-of-attack-causing-the-network-interuption.)
 3. [How the attack is causing the website to malfunction and suggestions](#How-the-attack-is-causing-the-website-to-malfunction-and-suggestions)
-
 # Identify the type of attack causing the network interuption.
 
 **Log Entry number and Timestamp**
@@ -35,15 +34,24 @@ This Wireshark TCP log section provided to you starts at log entry number (No.) 
 The source and destination columns contain the source IP address of the machine that is sending a packet and the intended destination IP address of the packet. In this log file, the IP address 192.0.2.1 belongs to the company’s web server. The range of IP addresses in 198.51.100.0/24 belong to the employees’ computers.
 
 **Protocol type and related information**
+
 ![image](https://github.com/user-attachments/assets/b718d611-8cf0-4b8b-aeea-3a0e22bc8602)
+
 The Protocol column indicates that the packets are being sent using the TCP protocol, which is at the transport layer of the TCP/IP model. In the given log file, you will notice that the protocol will eventually change to HTTP, at the application layer, once the connection to the web server is successfully established.
 
 The Info column provides information about the packet. It lists the source port followed by an arrow → pointing to the destination port. In this case, port 443 belongs to the web server. Port 443 is normally used for encrypted web traffic.
 
 The next data element given in the Info column is part of the three-way handshake process to establish a connection between two machines. In this case, employees are trying to connect to the company’s web server: 
--The [SYN] packet is the initial request from an employee visitor trying to connect to a web page hosted on the web server. SYN stands for “synchronize.” 
--The [SYN, ACK] packet is the web server’s response to the visitor’s request agreeing to the connection. The server will reserve system resources for the final step of the handshake. SYN, ACK stands for “synchronize acknowledge.”
--The [ACK] packet is the visitor’s machine acknowledging the permission to connect. This is the final step required to make a successful TCP connection. ACK stands for “acknowledge.”
+  *The [SYN] packet is the initial request from an employee visitor trying to connect to a web page hosted on the web server. SYN stands for “synchronize.” 
+  *The [SYN, ACK] packet is the web server’s response to the visitor’s request agreeing to the connection. The server will reserve system resources for the final step of the handshake. SYN, ACK stands for “synchronize acknowledge.”
+  *The [ACK] packet is the visitor’s machine acknowledging the permission to connect. This is the final step required to make a successful TCP connection. ACK stands for “acknowledge.”
+
+**The Attack**
+Malicious actors can take advantage of the TCP protocol by flooding a server with SYN packet requests for the first part of the handshake. However, if the number of SYN requests is greater than the server resources available to handle the requests, then the server will become overwhelmed and unable to respond to the requests. This is a network level denial of service (DoS) attack, called a SYN flood attack, that targets network bandwidth to slow traffic. A SYN flood attack simulates a TCP connection and floods the server with SYN packets. A DoS direct attack originates from a single source. A distributed denial of service (DDoS) attack comes from multiple sources, often in different locations, making it more difficult to identify the attacker or attackers.
 
 
 # How the attack is causing the website to malfunction and suggestions
+
+When website visitors try to establish a connection with the web server, a three-way handshake occurs using the TCP protocol. The 3-way handshake is a process used by TCP to establish a reliable connection between a client and a server. It ensures that both parties are ready to communicate and synchronizes the connection between them. The process begins when the client sends a SYN (synchronize) message to the server. The server responds with a SYN-ACK (synchronize-acknowledgment) message, which acknowledges the client's request and also sends its own sequence number. Finally, the client sends an ACK (acknowledgment) message back to the server, confirming the receipt of the server’s sequence number. When a malicious actor sends a large number of SYN packets all at once, it is typically part of a SYN flood attack, a type of Denial of Service (DoS) attack. The goal of this attack is to overwhelm the target server and prevent legitimate users from establishing connections. 
+
+The log indicates that the IP address “203.0.113.0” sent multiple requests which caused the system to crash. The user started sending the requests slowly and gradually increased the flow of requests, which caused the server to crash. 
