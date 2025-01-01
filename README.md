@@ -56,7 +56,7 @@ Malicious actors can take advantage of the TCP protocol by flooding a server wit
 
 When website visitors try to establish a connection with the web server, a three-way handshake occurs using the TCP protocol. The 3-way handshake is a process used by TCP to establish a reliable connection between a client and a server. It ensures that both parties are ready to communicate and synchronizes the connection between them. The process begins when the client sends a SYN (synchronize) message to the server. The server responds with a SYN-ACK (synchronize-acknowledgment) message, which acknowledges the client's request and also sends its own sequence number. Finally, the client sends an ACK (acknowledgment) message back to the server, confirming the receipt of the server’s sequence number. When a malicious actor sends a large number of SYN packets all at once, it is typically part of a SYN flood attack, a type of Denial of Service (DoS) attack. The goal of this attack is to overwhelm the target server and prevent legitimate users from establishing connections. 
 
-The log indicates that the IP address “203.0.113.0” sent multiple requests which caused the system to crash. The user started sending the requests slowly and gradually increased the flow of requests, which caused the server to crash. 
+The [Network Log](https://github.com/SMUGLER79/Cybersecurity-Incident-Report-Scenario/blob/main/Wireshark%20TCP_HTTP%20log.xlsx) indicates that the IP address “203.0.113.0” sent multiple requests which caused the system to crash. The user started sending the requests slowly and gradually increased the flow of requests, which caused the server to crash. 
 
 This can be fixed as follows:
  - Implementing rate limiting to control the number of requests from any single IP address within a given time frame. 
@@ -67,3 +67,5 @@ This can be fixed as follows:
 # Conlusion
 
 In conclusion, the SYN flood attack on our web server has resulted in a significant disruption, as the malicious actor overwhelmed the server with a high volume of SYN requests, causing it to crash. To prevent such attacks in the future, implementing rate limiting, deploying a Web Application Firewall (WAF), and utilizing load balancing are crucial steps to protect the server from being overwhelmed by malicious traffic. These measures will not only enhance our defense against SYN flood attacks but also ensure that legitimate users can access the website without interruptions, maintaining the integrity and availability of our services.
+
+Detailed Report: [Cybersecurity Incident Report.pdf](https://github.com/SMUGLER79/Cybersecurity-Incident-Report-Scenario/blob/main/Cybersecurity%20incident%20report.pdf)
