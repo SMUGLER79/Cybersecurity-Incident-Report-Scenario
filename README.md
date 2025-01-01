@@ -16,9 +16,9 @@ You take the server offline temporarily so that the machine can recover and retu
 
 # Workflow
 
-[1. Read the Wireshark TCP/HTTP Log.](https://github.com/SMUGLER79/Cybersecurity-Incident-Report-Scenario/blob/main/Wireshark%20TCP_HTTP%20log.xlsx)
-[2. Identify the type of attack causing the network interuption.](#Identify-the-type-of-attack-causing-the-network-interuption.)
-[3.How the attack is causing the website to malfunction and suggestions](#How-the-attack-is-causing-the-website-to-malfunction-and-suggestions)
+1. [Read the Wireshark TCP/HTTP Log.](https://github.com/SMUGLER79/Cybersecurity-Incident-Report-Scenario/blob/main/Wireshark%20TCP_HTTP%20log.xlsx)
+2. [Identify the type of attack causing the network interuption.](#Identify-the-type-of-attack-causing-the-network-interuption.)
+3. [How the attack is causing the website to malfunction and suggestions](#How-the-attack-is-causing-the-website-to-malfunction-and-suggestions)
 
 # Identify the type of attack causing the network interuption.
 
