@@ -1,4 +1,4 @@
-# Cybersecurity-Incident-Report-Scenario
+# SYN Flood Cybersecurity Incident Report-Scenario
 
 # Introduction
 
