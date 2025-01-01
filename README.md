@@ -23,11 +23,15 @@ You take the server offline temporarily so that the machine can recover and retu
 # Identify the type of attack causing the network interuption.
 
 **Log Entry number and Timestamp**
+
 ![image](https://github.com/user-attachments/assets/aaf84d53-41b4-4aaf-871f-6fd58345af94)
+
 This Wireshark TCP log section provided to you starts at log entry number (No.) 47, which is three seconds and .144521 milliseconds after the logging tool started recording. This indicates that approximately 47 messages were sent and received by the web server in the 3.1 seconds after starting the log. This rapid traffic speed is why the tool tracks time in milliseconds. 
 
 **Source and Destination IP Address**
+
 ![image](https://github.com/user-attachments/assets/0aba484b-c30a-4ac8-80fc-c1629f8a0b55)
+
 The source and destination columns contain the source IP address of the machine that is sending a packet and the intended destination IP address of the packet. In this log file, the IP address 192.0.2.1 belongs to the company’s web server. The range of IP addresses in 198.51.100.0/24 belong to the employees’ computers.
 
 **Protocol type and related information**
